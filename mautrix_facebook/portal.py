@@ -593,7 +593,7 @@ class Portal:
                 url = url[0:-1]
 
             # Prevent sending urls that are already in the original message text
-            if url not in message_text:
+            if message_text is not None and url not in message_text:
                 content = TextMessageEventContent(msgtype=MessageType.TEXT, body=f"{attachment.title}: {attachment.original_url}")
                 content.format = Format.HTML
                 content.formatted_body = f"<a href='{attachment.original_url}'>{attachment.title}</a>"
