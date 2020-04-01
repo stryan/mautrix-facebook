@@ -597,14 +597,14 @@ class Portal:
                 title = url
             # Prevent sending urls that are already in the original message text
             if message_text is not None and url not in message_text:
-                content = TextMessageEventContent(msgtype=MessageType.TEXT, body=f"{attachment.title}: {attachment.original_url}")
+                content = TextMessageEventContent(msgtype=MessageType.TEXT, body=f"{title}: {attachment.original_url}")
                 content.format = Format.HTML
-                content.formatted_body = f"<a href='{attachment.original_url}'>{attachment.title}</a>"
+                content.formatted_body = f"<a href='{attachment.original_url}'>{title}</a>"
                 event_id = await intent.send_message(self.mxid, content)
             elif message_text is None:
-                content = TextMessageEventContent(msgtype=MessageType.TEXT, body=f"{attachment.title}: {attachment.original_url}")
+                content = TextMessageEventContent(msgtype=MessageType.TEXT, body=f"{title}: {attachment.original_url}")
                 content.format = Format.HTML
-                content.formatted_body = f"<a href='{attachment.original_url}'>{attachment.title}</a>"
+                content.formatted_body = f"<a href='{attachment.original_url}'>{title}</a>"
                 event_id = await intent.send_message(self.mxid, content)
             else:
                 return None
