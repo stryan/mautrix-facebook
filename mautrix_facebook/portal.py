@@ -598,7 +598,7 @@ class Portal:
                 content.format = Format.HTML
                 content.formatted_body = f"<a href='{attachment.original_url}'>{attachment.title}</a>"
                 event_id = await intent.send_message(self.mxid, content)
-            else if message_text is None:
+            elif message_text is None:
                 content = TextMessageEventContent(msgtype=MessageType.TEXT, body=f"{attachment.title}: {attachment.original_url}")
                 content.format = Format.HTML
                 content.formatted_body = f"<a href='{attachment.original_url}'>{attachment.title}</a>"
